@@ -11,32 +11,61 @@
       @click="ordenar()"
     />
     <q-btn-dropdown
+      v-if="keys.length > 0"
       flat
       round
       color="primary"
       icon="filter_list"
       size="15px"
-      class="absolute-top-right q-mt-lg q-mr-xs"
+      class="absolute-top-right q-mt-lg q-mr-md"
     >
-      <q-list>
-        <q-item clickable v-close-popup @click="fetchRecetas()">
-          <q-item-section side>
-            <q-item-label>Todos</q-item-label>
+      <q-list separator class="shadow-3">
+        <q-item
+          clickable
+          v-close-popup
+          @click="fetchRecetas()"
+          class="bg-primary text-center"
+        >
+          <q-item-section>
+            <q-item-label class="text-blue-grey-1 text-subtitle1"
+              >Todos</q-item-label
+            >
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click="favoritos()">
-          <q-item-section side>
-            <q-item-label>Favoritos</q-item-label>
+        <q-item
+          clickable
+          v-close-popup
+          @click="favoritos()"
+          class="bg-primary text-center"
+        >
+          <q-item-section>
+            <q-item-label class="text-blue-grey-1 text-subtitle1"
+              >Favoritos</q-item-label
+            >
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click="originales()">
-          <q-item-section side>
-            <q-item-label>Originales</q-item-label>
+        <q-item
+          clickable
+          v-close-popup
+          @click="originales()"
+          class="bg-primary text-center"
+        >
+          <q-item-section>
+            <q-item-label class="text-blue-grey-1 text-subtitle1"
+              >Originales</q-item-label
+            >
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click="proporciones()">
-          <q-item-section side>
-            <q-item-label>Proporciones</q-item-label>
+        <q-item
+          clickable
+          v-close-popup
+          @click="proporciones()"
+          class="bg-primary text-center"
+        >
+          <q-item-section>
+            <q-item-label class="text-blue-grey-1 text-subtitle1"
+              >Proporciones</q-item-label
+            >
           </q-item-section>
         </q-item>
       </q-list>
