@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/todas", async (req, res) => {
   try {
     const recetas = await Receta.find();
+    recetas.reverse();
     res.status(200).json(recetas);
   } catch (error) {
     res.status(500).json({ error: error.message });
