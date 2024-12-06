@@ -11,7 +11,6 @@
       @click="ordenar()"
     />
     <q-btn-dropdown
-      v-if="keys.length > 0"
       flat
       round
       color="primary"
@@ -23,12 +22,12 @@
         <q-item
           clickable
           v-close-popup
-          @click="fetchRecetas()"
+          @click="todas()"
           class="bg-primary text-center"
         >
           <q-item-section>
             <q-item-label class="text-blue-grey-1 text-subtitle1"
-              >Todos</q-item-label
+              >Todas</q-item-label
             >
           </q-item-section>
         </q-item>
@@ -40,7 +39,7 @@
         >
           <q-item-section>
             <q-item-label class="text-blue-grey-1 text-subtitle1"
-              >Favoritos</q-item-label
+              >Favoritas</q-item-label
             >
           </q-item-section>
         </q-item>
@@ -70,8 +69,8 @@
         </q-item>
       </q-list>
     </q-btn-dropdown>
-    <div v-if="keys.length" class="row justify-center">
-      <h4 class="text-bold text-purple q-ma-md">Mis recetas</h4>
+    <div class="row justify-center">
+      <h5 class="text-bold text-purple q-ma-md">{{ titulo }}</h5>
     </div>
     <q-separator v-if="keys.length" class="q-mt-xs"></q-separator>
     <div v-if="loading" class="absolute-center">
@@ -365,6 +364,7 @@ const edit_descripcion = ref();
 const editar = ref(false);
 const edit_nombreReceta = ref();
 const loading = ref(false);
+const titulo = ref("Todas las recetas");
 
 // obtener todas las recetas guardadas (se cambio de localStorage a peticion a la API)
 
@@ -468,18 +468,26 @@ const favorita = async (receta) => {
     .catch((error) => console.error("Error:", error));
 };
 
+const todas = async () => {
+  await fetchRecetas();
+  titulo.value = "Todas las recetas";
+};
+
 const favoritos = async () => {
   await fetchRecetas();
+  titulo.value = "Recetas favoritas";
   keys.value = keys.value.filter((receta) => receta.favorita);
 };
 
 const originales = async () => {
   await fetchRecetas();
+  titulo.value = "Recetas originales";
   keys.value = keys.value.filter((receta) => !receta.esProporcion);
 };
 
 const proporciones = async () => {
   await fetchRecetas();
+  titulo.value = "Recetas en proporción";
   keys.value = keys.value.filter((receta) => receta.esProporcion);
 };
 
