@@ -340,13 +340,11 @@ const loading = ref(false);
 // obtener todas las recetas guardadas (se cambio de localStorage a peticion a la API)
 
 const fetchRecetas = async () => {
-  loading.value = true; // Mostrar el spinner
   //await fetch("http://localhost:3000/recetas/todas")
   await fetch("https://calcuback.onrender.com/recetas/todas")
     .then((response) => response.json())
     .then((data) => (keys.value = data))
-    .catch((error) => console.error("Error:", error))
-    .finally(() => (loading.value = false)); // Ocultar el spinner
+    .catch((error) => console.error("Error:", error));
   ordenar();
 };
 
@@ -502,7 +500,10 @@ const guardarEdit = async () => {
 };
 
 onMounted(async () => {
-  await fetchRecetas();
+  loading.value = true;
+  await fetchRecetas().then(() => {
+    loading.value = false;
+  });
 });
 </script>
 
