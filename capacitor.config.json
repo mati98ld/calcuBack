@@ -1,0 +1,8 @@
+{
+  "appId": "calcu.proporciones",
+  "appName": "calculadora-de-proporciones",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

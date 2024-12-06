@@ -1,0 +1,13 @@
+{
+  "name": "calculadora-de-proporciones",
+  "version": "0.0.1",
+  "description": "Esta app es una calculadora de proporciones",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^5.7.2",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0"
+  },
+  "author": ""
+}

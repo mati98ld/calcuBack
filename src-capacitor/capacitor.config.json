@@ -1,0 +1,8 @@
+{
+  "appId": "org.capacitor.quasar.app",
+  "appName": "Calcu de proporciones",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
