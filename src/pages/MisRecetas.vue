@@ -1,54 +1,54 @@
 <template>
   <q-page padding class="bg-secondary column">
+    <q-btn
+      v-if="keys.length > 1"
+      flat
+      round
+      color="primary"
+      icon="sort_by_alpha"
+      size="15px"
+      class="absolute-top-left q-mt-lg q-ml-md"
+      @click="ordenar()"
+    />
+    <q-btn-dropdown
+      flat
+      round
+      color="primary"
+      icon="filter_list"
+      size="15px"
+      class="absolute-top-right q-mt-lg q-mr-xs"
+    >
+      <q-list>
+        <q-item clickable v-close-popup @click="fetchRecetas()">
+          <q-item-section side>
+            <q-item-label>Todos</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-close-popup @click="favoritos()">
+          <q-item-section side>
+            <q-item-label>Favoritos</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-close-popup @click="originales()">
+          <q-item-section side>
+            <q-item-label>Originales</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-close-popup @click="proporciones()">
+          <q-item-section side>
+            <q-item-label>Proporciones</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
+    <div v-if="keys.length" class="row justify-center">
+      <h4 class="text-bold text-purple q-ma-md">Mis recetas</h4>
+    </div>
+    <q-separator v-if="keys.length" class="q-mt-xs"></q-separator>
     <div v-if="loading" class="absolute-center">
       <q-spinner color="primary" size="50px" />
     </div>
     <div v-else>
-      <q-btn
-        v-if="keys.length > 1"
-        flat
-        round
-        color="primary"
-        icon="sort_by_alpha"
-        size="15px"
-        class="absolute-top-left q-mt-lg q-ml-md"
-        @click="ordenar()"
-      />
-      <q-btn-dropdown
-        flat
-        round
-        color="primary"
-        icon="filter_list"
-        size="15px"
-        class="absolute-top-right q-mt-lg q-mr-xs"
-      >
-        <q-list>
-          <q-item clickable v-close-popup @click="fetchRecetas()">
-            <q-item-section side>
-              <q-item-label>Todos</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable v-close-popup @click="favoritos()">
-            <q-item-section side>
-              <q-item-label>Favoritos</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable v-close-popup @click="originales()">
-            <q-item-section side>
-              <q-item-label>Originales</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item clickable v-close-popup @click="proporciones()">
-            <q-item-section side>
-              <q-item-label>Proporciones</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-btn-dropdown>
-      <div v-if="keys.length" class="row justify-center">
-        <h4 class="text-bold text-purple q-ma-md">Mis recetas</h4>
-      </div>
-      <q-separator v-if="keys.length" class="q-mt-xs"></q-separator>
       <q-list separator>
         <q-item v-for="receta in keys" :key="receta" class="q-pl-xs q-pr-xs">
           <q-item-section side>
