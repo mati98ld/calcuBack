@@ -16,7 +16,7 @@
       color="primary"
       icon="filter_list"
       size="15px"
-      class="absolute-top-right q-mt-lg q-mr-md"
+      class="absolute-top-right q-mt-lg q-mr-xs"
     >
       <q-list separator class="shadow-3">
         <q-item
@@ -374,22 +374,30 @@ const fetchRecetas = async () => {
     .then((response) => response.json())
     .then((data) => (keys.value = data))
     .catch((error) => console.error("Error:", error));
-  ordenar();
+  // ordenar();
 };
 
 const keys = ref(fetchRecetas());
 
-// ordenar debe dar prioridad a favoritas ademas de orden alfabetico, y cuando se ejecuta de nuevo debe invertir el orden
+// ordenar por orden alfabetico, y cuando se ejecuta de nuevo debe invertir el orden
 
 const ordenar = () => {
   estaOrdenadoAlfabeticamente(keys.value)
     ? keys.value.reverse()
-    : keys.value.sort();
+    : keys.value.sort((a, b) => {
+        if (a.nombreReceta < b.nombreReceta) {
+          return -1;
+        }
+        if (a.nombreReceta > b.nombreReceta) {
+          return 1;
+        }
+        return 0;
+      });
 };
 
 const estaOrdenadoAlfabeticamente = (array) => {
   for (let i = 0; i < array.length - 1; i++) {
-    if (array[i] > array[i + 1]) {
+    if (array[i].nombreReceta > array[i + 1].nombreReceta) {
       return false;
     }
   }
