@@ -1,5 +1,5 @@
 {
-  "appId": "org.capacitor.quasar.app",
+  "appId": "com.calcuproporciones.miapp",
   "appName": "Calcu de proporciones",
   "webDir": "www",
   "server": {

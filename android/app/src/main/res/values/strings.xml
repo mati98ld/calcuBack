@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">calculadora-de-proporciones</string>
+    <string name="title_activity_main">calculadora-de-proporciones</string>
+    <string name="package_name">calcu.proporciones</string>
+    <string name="custom_url_scheme">calcu.proporciones</string>
+</resources>

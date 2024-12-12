@@ -1,8 +1,9 @@
 {
   "appId": "calcu.proporciones",
   "appName": "calculadora-de-proporciones",
-  "webDir": "www",
+  "webDir": "src-capacitor/www",
   "server": {
     "androidScheme": "https"
-  }
+  },
+  "bundledWebRuntime": false
 }

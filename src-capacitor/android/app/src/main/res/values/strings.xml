@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Calcu de proporciones</string>
     <string name="title_activity_main">Calcu de proporciones</string>
-    <string name="package_name">org.capacitor.quasar.app</string>
-    <string name="custom_url_scheme">org.capacitor.quasar.app</string>
+    <string name="package_name">com.calcuproporciones.miapp</string>
+    <string name="custom_url_scheme">com.calcuproporciones.miapp</string>
 </resources>
